@@ -1,15 +1,24 @@
 header{
     background-color: black;
     width:100%;
-    height:40px;
+    height: 60px;
     position:absolute;
     top: 0;
     left: 0;
 }
 .nav-links{
-    color: red;
-    font-size: x-large;
+    color: gainsboro;
+    font-size:xx-large;
     padding:10%, 50%;
     font-family: cursive;
 
+}
+.background-settings{
+    background: url("./background/nasa-Q1p7bh3SHj8-unsplash.jpg");
+    background-size:cover;
+    background-repeat: no-repeat;
+}
+.intro{
+    white-space: normal;
+    width: 30%;
 }
