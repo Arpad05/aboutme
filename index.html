@@ -16,7 +16,7 @@
   </header>
 <main style="padding-top: 70px;">
   <div>
-    <p style="color: aliceblue; float: left;" class="intro">Currently studying in Computer Science at University of Montreal</p>
+    <p style="color: aliceblue; float: left;" class="intro"></p>
   </div>
 </main>
 </body>
@@ -24,5 +24,10 @@
   
 <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
 <script>
-  var typed = Typed()
+  var typed = Typed(".intro", {
+    strings : ["Currently studying in Computer Science at University of Montreal"],
+    typeSpeed : 150,
+    loop : false
+
+  })
 </script>
