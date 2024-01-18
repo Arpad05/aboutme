@@ -16,17 +16,18 @@
   </header>
 <main style="padding-top: 70px;">
   <div>
-    <p style="color: aliceblue; float: left;" class="intro"><span class="text-intro"></span></p>
+    <p style="color: aliceblue; float: left;" class="intro"><span id="text-intro"></span></p>
+    <span></span>
   </div>
 </main>
 <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
-<script>
-  var typed = Typed(".text-intro", {
-    strings : ["Currently studying in Computer Science at University of Montreal, I'm also interested"],
-    typeSpeed : 150,
-    loop : false
 
-  })
+<script>
+  var typed = new Typed('#text-intro', {
+    strings : ["Currently studying in Computer Science at University of Montreal, I'm also interested in cybersecurity and software development in diverse programming languages such as C, C++ and Java. I "],
+    typeSpeed: 30,
+    loop: false
+  });
 </script>
 </body>
 </html>
