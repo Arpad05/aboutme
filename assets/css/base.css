@@ -14,7 +14,7 @@ header{
 
 }
 .background-settings{
-    background: url("/background/nasa-Q1p7bh3SHj8-unsplash.jpg");
+    background: url("background/nasa-Q1p7bh3SHj8-unsplash.jpg");
     background-size:cover;
     background-repeat: no-repeat;
 }
