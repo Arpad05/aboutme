@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <title>Arpad Botond Rigo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"> 
   <link rel="icon" type="image/svg+xml" href="assets/icon/accountshield.svg" />
   <link rel="stylesheet" type="text/css" href="./assets/css/base.css">
 </head>
@@ -11,21 +14,26 @@
     <div>
     <nav style="text-align: center;">
       <a href="index.html" class="nav-links">Home</a>
+      <a href="competitions.html" class="nav-links">Competitions</a>
+      <a href="occupations.html" class="nav-links">Occupations</a>
+      <a href="media.html" class="nav-links">Media</a>
     </nav>
     </div>
   </header>
 <main style="padding-top: 70px;">
   <div>
     <p style="color: aliceblue; float: left;" class="intro"><span id="text-intro"></span></p>
-    <span></span>
+    <span id="avatar">
+      <img src="./assets/photos/avatar.jpg" alt="avatar" id="avatar-photo">
+    </span>
   </div>
 </main>
 <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
 
 <script>
   var typed = new Typed('#text-intro', {
-    strings : ["Currently studying in Computer Science at University of Montreal, I'm also interested in cybersecurity and software development in diverse programming languages such as C, C++ and Java. I studied pre-universitary Computer Science & Mathematics at Bois-de-Boulogne College"],
-    typeSpeed: 30,
+    strings : ["Currently studying in Computer Science at University of Montreal and studied pre-universitary Computer Science and Mathematics at Bois-de-Boulogne College. I'm mostly interested in cybersecurity and software development in diverse programming languages such as C, C++ and Java. Former teacher assistant in Object-Oriented Programming course at my university, I also worked as a project manager to implement a temporary data base as a student job."],
+    typeSpeed:20,
     loop: false
   });
 </script>

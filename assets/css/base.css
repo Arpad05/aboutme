@@ -10,8 +10,8 @@ header{
     color: rgb(226, 218, 218);
     font-size:xx-large;
     padding:10%, 50%;
-    font-family: cursive;
-
+    padding-right: 25px;
+    font-family: 'Press Start 2P', system-ui;
 }
 .background-settings{
     background: url("./background/nasa-Q1p7bh3SHj8-unsplash.jpg");
@@ -20,5 +20,16 @@ header{
 }
 .intro{
     white-space: normal;
-    width: 30%;
+    width: 40%;
+    padding-top: 5%;
+    font-size: 150%;
+}
+#avatar{
+    float: right;
+    padding-top: 20%;
+}
+#avatar-photo{
+    border-radius: 50%;
+    max-height: 400px;
+    max-width: 400px;
 }
