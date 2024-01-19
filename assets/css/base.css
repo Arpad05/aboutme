@@ -33,3 +33,13 @@ header{
     max-height: 400px;
     max-width: 400px;
 }
+@media only screen and (max-width: 1200px) {
+    .intro{
+      font-size: large;
+    }
+  }
+  @media only screen and (max-width: 1600px) {
+    .intro{
+      font-size: larger;
+    }
+  }
