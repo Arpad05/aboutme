@@ -46,7 +46,7 @@ nav{
     max-height: 400px;
     max-width: 400px;
 }
-@media only screen and (min-width: 721px) {
+@media only screen and (min-width: 720px) {
     #intro{
       font-size: larger;
     }
@@ -56,7 +56,7 @@ nav{
       font-size: x-large;
     }
   }
-  @media only screen and (max-width: 720px){
+  @media only screen and (max-width: 719px){
     #intro{
       font-size: large;
     }
