@@ -16,6 +16,9 @@ header{
     font-family: 'Orbitron', sans-serif;}
 .background-settings{
     background:url("./background/background-1.jpg");
+    background-position: center;
+    height: 100vh;
+    max-width: auto;
     background-size:cover;
     background-repeat: no-repeat;
 }
