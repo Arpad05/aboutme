@@ -10,13 +10,13 @@
   <link rel="stylesheet" type="text/css" href="./assets/css/base.css">
 </head>
 <body style="background-color:#0d0d0e;" class="background-settings">
-  <header>
+  <header id="nav-bar">
     <div>
     <nav >
-      <a href="index.html" class="nav-links">Home</a>
-      <a href="competitions.html" class="nav-links">Competitions</a>
-      <a href="occupations.html" class="nav-links">Occupations</a>
-      <a href="projects.html" class="nav-links">Projects</a>
+      <a href="index.html" class="nav-links" id="home-link">Home</a>
+      <a href="competitions.html" class="nav-links" id="comp-link">Competitions</a>
+      <a href="occupations.html" class="nav-links" id="occ-link">Occupations</a>
+      <a href="projects.html" class="nav-links"  id="project-link">Projects</a>
     </nav>
     </div>
   </header>
@@ -30,9 +30,13 @@
 <script>
   //alert(navigator.userAgent);
   if(navigator.userAgent.includes("Android") || navigator.userAgent.includes("iPhone")){
-    alert("true");
     document.getElementById('text').innerHTML="Currently studying in Computer Science at University of Montreal and studied pre-universitary Computer Science and Mathematics at Bois-de-Boulogne College. I'm mostly interested in cybersecurity and software development in diverse programming languages such as C, C++ and Java. Former teacher assistant in Object-Oriented Programming course at my university, I also worked as a project manager to implement a temporary data base as a student job.";
-    document.getElementsByClassName('nav-links').style.fontsize = "x-large";
+    document.getElementById('nav-bar').style.height="100px"
+    document.getElementById('home-link').style.fontSize="40px";
+    document.getElementById('comp-link').style.fontSize="40px";
+    document.getElementById('occ-link').style.fontSize="40px";
+    document.getElementById('project-link').style.fontSize="40px";
+
   } else {
             var typed = new Typed('#text', {
             strings : ["Currently studying in Computer Science at University of Montreal and studied pre-universitary Computer Science and Mathematics at Bois-de-Boulogne College. I'm mostly interested in cybersecurity and software development in diverse programming languages such as C, C++ and Java. Former teacher assistant in Object-Oriented Programming course at my university, I also worked as a project manager to implement a temporary data base as a student job."],
