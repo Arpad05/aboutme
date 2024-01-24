@@ -10,6 +10,8 @@
   <link rel="stylesheet" type="text/css" href="./assets/css/base.css">
 </head>
 <body style="background-color:#0d0d0e;" class="background-settings">
+  <script type="text/javascript" src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+  <script type="text/javascript" src="pageLoad.js"></script> 
   <header id="nav-bar">
     <div>
     <nav >
@@ -25,25 +27,5 @@
     <p id="intro"><span id="text"></span></p>
   </div>
 </main>
-
-<script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
-<script>
-  //alert(navigator.userAgent);
-  if(navigator.userAgent.includes("Android") || navigator.userAgent.includes("iPhone")){
-    document.getElementById('text').innerHTML="Currently studying in Computer Science at University of Montreal and studied pre-universitary Computer Science and Mathematics at Bois-de-Boulogne College. I'm mostly interested in cybersecurity and software development in diverse programming languages such as C, C++ and Java. Former teacher assistant in Object-Oriented Programming course at my university, I also worked as a project manager to implement a temporary data base as a student job.";
-    document.getElementById('nav-bar').style.height="100px"
-    document.getElementById('home-link').style.fontSize="40px";
-    document.getElementById('comp-link').style.fontSize="40px";
-    document.getElementById('occ-link').style.fontSize="40px";
-    document.getElementById('project-link').style.fontSize="40px";
-
-  } else {
-            var typed = new Typed('#text', {
-            strings : ["Currently studying in Computer Science at University of Montreal and studied pre-universitary Computer Science and Mathematics at Bois-de-Boulogne College. I'm mostly interested in cybersecurity and software development in diverse programming languages such as C, C++ and Java. Former teacher assistant in Object-Oriented Programming course at my university, I also worked as a project manager to implement a temporary data base as a student job."],
-            typeSpeed:20,
-            loop: false
-  });
-}
-</script>
 </body>
 </html>
