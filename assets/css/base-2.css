@@ -3,7 +3,7 @@
 body{
     margin: 0;
     background-color: #000;
-    color: #eee;
+    color: #e45252;
     font-family: Poppins;
     font-size: 12px;
 }
@@ -57,7 +57,9 @@ nav{
     transform: translateX(-50%);
     padding-right: 30%;
     box-sizing: border-box;
-    color: #fff;
+    color: #e45252;
+    font-size: medium;
+    font-weight: bold;
     text-shadow: 0 5px 10px #0004;
 }
 .carousel .list .item .author{
