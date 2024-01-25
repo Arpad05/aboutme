@@ -8,6 +8,7 @@ header{
     position:absolute;
     top: 0;
     left: 0;
+    z-index: 100;
 }
 nav{
   text-align: center;
@@ -26,6 +27,9 @@ nav{
     max-width: auto;
     background-size:cover;
     background-repeat: no-repeat;
+}
+.background-settings-1{
+  background-color: black;
 }
 #intro{
     font-family: 'Poiret One', sans-serif;
@@ -46,6 +50,59 @@ nav{
     border-radius: 50%;
     max-height: 400px;
     max-width: 400px;
+}
+.arrows{
+  position: absolute;
+  top: 80%;
+  right: 52%;
+  z-index: 100;
+  width: 300px;
+  max-width: 30%;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.arrows button{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #eee4;
+  border: none;
+  color: #fff;
+  font-family: monospace;
+  font-weight: bold;
+  transition: .5s;
+}
+.arrows button:hover{
+  background-color: #fff;
+  color: #000;
+}
+.carousel .list .item:nth-child(1){
+    z-index: 1;
+}
+.carousel{
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+.carousel .list .item{
+  position: absolute;
+  inset: 0 0 0 0;
+}
+.carousel .list .item .carousel-image{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.carousel .list .item .content .name {
+  position: absolute;
+  color: antiquewhite;
+  text-shadow: 0 5px 10px #0004;
+}
+.carousel .list .item .content .name {
+  font-weight: bold;
+  font-size: 5em;
 }
 @media only screen and (min-width: 720px) {
     #intro{
