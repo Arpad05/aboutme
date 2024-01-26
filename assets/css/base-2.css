@@ -22,13 +22,14 @@ header{
 nav{
     text-align: center;
     padding-top: 15px;
-  }
-  .nav-links{
+}
+.nav-links{
       color: rgb(226, 218, 218);
       font-size:x-large;
       padding-left: 5%;
       padding-right: 5%;
-      font-family: 'Orbitron', sans-serif;}
+      font-family: 'Orbitron', sans-serif;
+}
 
 /* carousel */
 .carousel{

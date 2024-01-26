@@ -72,6 +72,9 @@ nav{
   font-weight: bold;
   transition: .5s;
 }
+a{
+  text-decoration: none;
+}
 .arrows button:hover{
   background-color: #fff;
   color: #000;
