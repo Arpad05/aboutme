@@ -12,6 +12,7 @@ header{
 }
 nav{
   text-align: center;
+  padding: 15px;
 }
 .nav-links{
     color: rgb(226, 218, 218);
