@@ -17,6 +17,18 @@ nav{
 a{
   text-decoration: none;
 }
+.icons{
+  position: absolute;
+  width: 30%;
+  text-align: center;
+  left: 35%;
+  right: 35%;
+  bottom: 6em;
+}
+.icons-img{
+  padding-left: 2em;
+  padding-right: 2em;
+}
 .nav-links{
     color: rgb(226, 218, 218);
     font-size:x-large;
@@ -44,6 +56,9 @@ a{
     color: aliceblue;
     font-weight: bold;
     text-align: center;
+}
+#text-intro{
+  font-size:1.5em;
 }
 #avatar{
     float: right;
