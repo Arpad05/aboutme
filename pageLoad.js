@@ -14,7 +14,7 @@ function homePageLoad(){
         console.log("problem")
         document.getElementById("navigation").style.padding="15px";
           var typed = new Typed('#text-intro', {
-            strings : ["Currently studying in Computer Science at University of Montreal and studied pre-universitary Computer Science and Mathematics at Bois-de-Boulogne College, I'm mostly interested in cybersecurity and software development in diverse programming languages such as C, C++ and Java. Former teacher assistant in Object-Oriented Programming course at my university, I also worked as a project manager to implement a temporary data base as a student job and as a research assistant about fake news propagation. I currently work as a Tech Support as a summer job. I'm also the current co president of RHUM ( Regroupement des Hackers de l'Université de Montréal ), the cybersecurity club at University of Montreal."],
+            strings : ["Currently studying in Computer Science at University of Montreal and studied pre-universitary Computer Science and Mathematics at Bois-de-Boulogne College, I'm mostly interested in cybersecurity and software development in diverse programming languages such as C, C++ and Java. Former teacher assistant in Object-Oriented Programming course at my university, I also worked as a project manager to implement a temporary data base as a student job and as a research assistant about fake news propagation. I currently work as a Tech Support as a summer job. I'm also the current co president of RHUM ( Regroupement des Hackers de l'Université de Montréal ) the cybersecurity club at University of Montreal."],
             typeSpeed:4,
             loop: false
       });
