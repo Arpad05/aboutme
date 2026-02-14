@@ -1,32 +1,551 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-  <meta name="viewport",content="width=device-width",charset="UTF-8">
-  <title>Arpad Botond Rigo</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"> 
-  <link rel="icon" type="image/svg+xml" href="assets/icon/accountshield.svg" />
-  <link rel="stylesheet" type="text/css" href="./assets/css/base.css">
-  <script id="MathJax-script" async
-  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projets - Arpad Botond Rigo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0A2463;
+            --primary-light: #1E3A8A;
+            --accent: #3E92CC;
+            --text-dark: #1A1A1A;
+            --text-medium: #4A4A4A;
+            --text-light: #6B7280;
+            --bg-primary: #FFFFFF;
+            --bg-secondary: #F8FAFC;
+            --bg-tertiary: #EEF2F6;
+            --border: #E2E8F0;
+            --success: #059669;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-dark);
+            background: var(--bg-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            animation: slideDown 0.6s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.25rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary);
+            letter-spacing: -0.02em;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-medium);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary);
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        /* Page Header */
+        .page-header {
+            margin-top: 80px;
+            padding: 4rem 2rem 3rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out 0.2s forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            letter-spacing: -0.03em;
+        }
+
+        .page-header p {
+            font-size: 1.25rem;
+            color: var(--text-medium);
+            max-width: 700px;
+        }
+
+        /* Projects Section */
+        .projects-section {
+            padding: 2rem 2rem 5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .project-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+            opacity: 0;
+            animation: fadeIn 0.6s ease-out 0.4s forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .project-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+            border-color: var(--accent);
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .project-title-section {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .project-type {
+            display: inline-block;
+            padding: 0.375rem 0.875rem;
+            background: var(--primary);
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border-radius: 6px;
+            margin-bottom: 0.75rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .project-title {
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .project-subtitle {
+            font-size: 0.95rem;
+            color: var(--text-medium);
+            font-family: 'IBM Plex Mono', monospace;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-start;
+        }
+
+        .project-link {
+            padding: 0.625rem 1.25rem;
+            background: var(--bg-primary);
+            color: var(--primary);
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .project-link:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .project-link.primary {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .project-link.primary:hover {
+            background: var(--primary-light);
+        }
+
+        .project-description {
+            color: var(--text-medium);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+
+        .project-highlights {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-highlights li {
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text-medium);
+            margin-bottom: 0.75rem;
+            line-height: 1.7;
+        }
+
+        .project-highlights li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .tech-tag {
+            padding: 0.375rem 0.875rem;
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 0.85rem;
+            color: var(--text-medium);
+            font-family: 'IBM Plex Mono', monospace;
+        }
+
+        .project-image {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--border);
+        }
+
+        /* Coming Soon Section */
+        .coming-soon {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: var(--bg-tertiary);
+            border-radius: 12px;
+            margin-top: 2rem;
+        }
+
+        .coming-soon h3 {
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .coming-soon p {
+            color: var(--text-medium);
+            font-size: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border);
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: var(--text-medium);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .footer-copyright {
+            color: var(--text-light);
+            font-size: 0.875rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1.5rem;
+            }
+
+            .page-header {
+                padding: 3rem 1.5rem 2rem;
+            }
+
+            .page-header h1 {
+                font-size: 2.25rem;
+            }
+
+            .projects-section {
+                padding: 1.5rem 1.5rem 4rem;
+            }
+
+            .project-card {
+                padding: 1.75rem;
+            }
+
+            .project-header {
+                flex-direction: column;
+            }
+
+            .project-links {
+                width: 100%;
+            }
+
+            .project-link {
+                flex: 1;
+                justify-content: center;
+            }
+
+            .footer-container {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
 </head>
-<body class="background-settings">
-    <header>
-      <div>
-      <nav id="navigation">
-        <a href="index.html" class="nav-links">Home</a>
-        <a href="competitions.html" class="nav-links">Competitions</a>
-        <a href="occupations.html" class="nav-links">Occupations</a>
-        <a href="projects.html" class="nav-links">Projects</a>
-      </nav>
-      </div>
-    </header>
-    <h2 style="color: aliceblue; text-align: center;">Malware Analysis</h2>
-      <p style="color: aliceblue; text-align: center; padding-top:6em;">I'm currently working on a malware analysis software to compare th chi-square and Shannon entropy value in order to flag possible collisions.<br>By
-        doing so, it is easier to differentiate classical random files such as jpg and possibly encrypted or compressed files. <br>
-        In sum, all comes to compare the output of Shannon's entropy : $$H(X) = - \sum_{i=1}^{n} p_i \log_2 p_i$$ and chi-square's probability : $$\chi^2 = \sum_{i=1}^{n} \frac{(O_i - E_i)^2}{E_i}$$ .
-      </p>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">ABR</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="competitions.html">Compétitions</a></li>
+                <li><a href="occupations.html">Expérience</a></li>
+                <li><a href="projects.html" class="active">Projets</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <h1>Projets</h1>
+        <p>Recherche, développement et initiatives techniques qui démontrent ma passion pour la cybersécurité et l'analyse de systèmes complexes.</p>
+    </div>
+
+    <!-- Projects Section -->
+    <section class="projects-section">
+        <!-- Research Project -->
+        <article class="project-card">
+            <div class="project-header">
+                <div class="project-title-section">
+                    <span class="project-type">Recherche Académique</span>
+                    <h2 class="project-title">Simulation de la Propagation de Fausses Nouvelles Multi-Plateforme</h2>
+                    <p class="project-subtitle">Université de Montréal • Octobre 2023</p>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/Arpad05/Research-E23" class="project-link primary" target="_blank">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+                        </svg>
+                        Voir sur GitHub
+                    </a>
+                    <a href="https://github.com/Arpad05/Research-E23/blob/main/Fake_News_Propagation.pdf" class="project-link" target="_blank">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                            <path d="M5.5 7a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5zM5 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5z"/>
+                            <path d="M9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.5L9.5 0zm0 1v2A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5z"/>
+                        </svg>
+                        Lire le mémoire (PDF)
+                    </a>
+                </div>
+            </div>
+
+            <p class="project-description">
+                Projet de recherche indépendant explorant la propagation de la désinformation à travers plusieurs plateformes de médias sociaux (Facebook, Twitter, Reddit) en utilisant des modèles épidémiologiques et Graph Convolutional Networks (GCN). Ce travail analyse comment les différences entre les algorithmes de feed de chaque plateforme influencent la vitesse et l'ampleur de la diffusion de fausses nouvelles.
+            </p>
+
+            <ul class="project-highlights">
+                <li><strong>Cadre théorique innovant</strong> pour la modélisation cross-platform de la propagation d'information, incluant les comportements d'agents (Susceptible, Incubator, Spreader, Stifler)</li>
+                <li><strong>Analyse comparative approfondie</strong> des algorithmes de Facebook (scoring), Twitter (In/Out-Network), et Reddit (community-based) et leur impact sur la désinformation</li>
+                <li><strong>Revue de littérature exhaustive</strong> avec 14 sources académiques couvrant les modèles épidémiologiques, les réseaux sociaux et la détection de fake news</li>
+                <li><strong>Mémoire de recherche formel</strong> de 36 pages incluant méthodologie, formules mathématiques, visualisations et conclusions</li>
+                <li><strong>Intégration d'APIs</strong> pour la classification de contenu (Twinword) et le ciblage démographique basé sur les sujets</li>
+            </ul>
+
+            <div class="project-tech">
+                <span class="tech-tag">Graph Neural Networks</span>
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">Modélisation Épidémiologique</span>
+                <span class="tech-tag">Analyse de Réseaux Sociaux</span>
+                <span class="tech-tag">Machine Learning</span>
+                <span class="tech-tag">Recherche Académique</span>
+            </div>
+        </article>
+
+        <!-- CySA+ RPG Quiz -->
+        <article class="project-card">
+            <div class="project-header">
+                <div class="project-title-section">
+                    <span class="project-type">Outil Pédagogique</span>
+                    <h2 class="project-title">Pratique d'Examen CySA+ — RPG</h2>
+                    <p class="project-subtitle">Outil interactif de préparation • 2024-2026</p>
+                </div>
+                <div class="project-links">
+                    <a href="https://arpad05.github.io/securitypractices/" class="project-link primary" target="_blank">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+                        </svg>
+                        Jouer au Quiz
+                    </a>
+                    <a href="https://github.com/Arpad05/securitypractices" class="project-link" target="_blank">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+                        </svg>
+                        Code Source
+                    </a>
+                </div>
+            </div>
+
+            <p class="project-description">
+                Application web interactive de préparation à l'examen CySA+ (Cybersecurity Analyst) utilisant un format RPG gamifié. Le système simule des scénarios réalistes de SOC (Security Operations Center) où l'utilisateur incarne un analyste en cybersécurité devant répondre à 25 alertes et incidents sous contrainte de temps.
+            </p>
+
+            <ul class="project-highlights">
+                <li><strong>Gamification de l'apprentissage</strong> avec système de points (+10/-5), timer par question (120 secondes), et narratif RPG immersif guidé par un "Maître du jeu"</li>
+                <li><strong>Scénarios de SOC réalistes</strong> couvrant l'analyse de menaces, la réponse aux incidents, l'identification de vulnérabilités et les bonnes pratiques de sécurité</li>
+                <li><strong>Interface pédagogique</strong> avec conseils stratégiques, journal du maître du jeu pour feedback contextuel, et statistiques de performance détaillées</li>
+                <li><strong>Outil d'auto-apprentissage</strong> créé pendant ma préparation à la certification CySA+ pour renforcer les concepts clés par la pratique active</li>
+            </ul>
+
+            <div class="project-tech">
+                <span class="tech-tag">HTML/CSS</span>
+                <span class="tech-tag">JavaScript</span>
+                <span class="tech-tag">Gamification</span>
+                <span class="tech-tag">CySA+</span>
+                <span class="tech-tag">SOC</span>
+                <span class="tech-tag">Pédagogie</span>
+            </div>
+        </article>
+
+        <!-- Coming Soon -->
+        <div class="coming-soon">
+            <h3>Autres projets à venir</h3>
+            <p>Scripts d'automatisation PowerShell, labs de pentesting, outils de cybersécurité et plus encore.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-copyright">© 2026 Arpad Botond Rigo. Tous droits réservés.</div>
+            <ul class="footer-links">
+                <li><a href="mailto:arpad.botond.rigo@outlook.com">Email</a></li>
+                <li><a href="tel:438-408-0719">Téléphone</a></li>
+                <li><a href="https://github.com/Arpad05" target="_blank">GitHub</a></li>
+                <li><a href="https://linkedin.com/in/arpad-botond-rigo-30698b239/" target="_blank">LinkedIn</a></li>
+            </ul>
+        </div>
+    </footer>
 </body>
 </html>

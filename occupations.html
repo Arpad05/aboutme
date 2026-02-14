@@ -1,26 +1,531 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-  <meta name="viewport",content="width=device-width",charset="UTF-8">
-  <title>Arpad Botond Rigo</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"> 
-  <link rel="icon" type="image/svg+xml" href="assets/icon/accountshield.svg" />
-  <link rel="stylesheet" type="text/css" href="./assets/css/base.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expérience - Arpad Botond Rigo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0A2463;
+            --primary-light: #1E3A8A;
+            --accent: #3E92CC;
+            --text-dark: #1A1A1A;
+            --text-medium: #4A4A4A;
+            --text-light: #6B7280;
+            --bg-primary: #FFFFFF;
+            --bg-secondary: #F8FAFC;
+            --bg-tertiary: #EEF2F6;
+            --border: #E2E8F0;
+            --success: #059669;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-dark);
+            background: var(--bg-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            animation: slideDown 0.6s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.25rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary);
+            letter-spacing: -0.02em;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-medium);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary);
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        /* Page Header */
+        .page-header {
+            margin-top: 80px;
+            padding: 4rem 2rem 3rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out 0.2s forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            letter-spacing: -0.03em;
+        }
+
+        .page-header p {
+            font-size: 1.25rem;
+            color: var(--text-medium);
+            max-width: 700px;
+        }
+
+        /* Timeline */
+        .timeline {
+            padding: 2rem 2rem 5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 2rem;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--border);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 4rem;
+            padding-bottom: 3rem;
+            opacity: 0;
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        .timeline-item:nth-child(1) { animation-delay: 0.3s; }
+        .timeline-item:nth-child(2) { animation-delay: 0.4s; }
+        .timeline-item:nth-child(3) { animation-delay: 0.5s; }
+        .timeline-item:nth-child(4) { animation-delay: 0.6s; }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .timeline-marker {
+            position: absolute;
+            left: 1.4rem;
+            top: 0.5rem;
+            width: 1.25rem;
+            height: 1.25rem;
+            background: var(--primary);
+            border: 3px solid var(--bg-primary);
+            border-radius: 50%;
+            box-shadow: 0 0 0 3px var(--border);
+            z-index: 1;
+        }
+
+        .timeline-marker.current {
+            background: var(--success);
+            box-shadow: 0 0 0 3px var(--success), 0 0 0 6px rgba(5, 150, 105, 0.2);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        .timeline-content {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: translateX(8px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            border-color: var(--accent);
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .timeline-title {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .timeline-title h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.25rem;
+            letter-spacing: -0.02em;
+        }
+
+        .timeline-title .position {
+            font-size: 1rem;
+            color: var(--text-medium);
+            font-weight: 500;
+        }
+
+        .timeline-date {
+            padding: 0.5rem 1rem;
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--text-medium);
+            font-family: 'IBM Plex Mono', monospace;
+            white-space: nowrap;
+        }
+
+        .timeline-date.current {
+            background: var(--success);
+            color: white;
+            border-color: var(--success);
+        }
+
+        .timeline-description {
+            list-style: none;
+            margin-top: 1.25rem;
+        }
+
+        .timeline-description li {
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text-medium);
+            margin-bottom: 0.875rem;
+            line-height: 1.7;
+        }
+
+        .timeline-description li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .section-divider {
+            margin: 4rem 0 3rem;
+            text-align: center;
+        }
+
+        .section-divider h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-divider p {
+            color: var(--text-medium);
+            font-size: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border);
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: var(--text-medium);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .footer-copyright {
+            color: var(--text-light);
+            font-size: 0.875rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1.5rem;
+            }
+
+            .page-header {
+                padding: 3rem 1.5rem 2rem;
+            }
+
+            .page-header h1 {
+                font-size: 2.25rem;
+            }
+
+            .timeline {
+                padding: 1.5rem 1.5rem 4rem;
+            }
+
+            .timeline::before {
+                left: 1.5rem;
+            }
+
+            .timeline-item {
+                padding-left: 3.5rem;
+            }
+
+            .timeline-marker {
+                left: 0.9rem;
+            }
+
+            .timeline-content {
+                padding: 1.5rem;
+            }
+
+            .timeline-header {
+                flex-direction: column;
+            }
+
+            .timeline-date {
+                align-self: flex-start;
+            }
+
+            .footer-container {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
 </head>
-<body class="background-settings">
-    <header>
-      <div>
-      <nav nav id="navigation">
-        <a href="index.html" class="nav-links">Home</a>
-        <a href="competitions.html" class="nav-links">Competitions</a>
-        <a href="occupations.html" class="nav-links">Occupations</a>
-        <a href="projects.html" class="nav-links">Projects</a>
-      </nav>
-      </div>
-    </header>
-    <main>
-    </main>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">ABR</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="competitions.html">Compétitions</a></li>
+                <li><a href="occupations.html" class="active">Expérience</a></li>
+                <li><a href="projects.html">Projets</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <h1>Expérience Professionnelle</h1>
+        <p>Mon parcours dans la cybersécurité, l'enseignement et le support technique.</p>
+    </div>
+
+    <!-- Timeline -->
+    <div class="timeline">
+        <!-- Hydro-Québec -->
+        <div class="timeline-item">
+            <div class="timeline-marker current"></div>
+            <div class="timeline-content">
+                <div class="timeline-header">
+                    <div class="timeline-title">
+                        <h3>Hydro-Québec</h3>
+                        <p class="position">Stagiaire en cybersécurité (annuaires)</p>
+                    </div>
+                    <span class="timeline-date current">Mai 2025 - Présent</span>
+                </div>
+                <ul class="timeline-description">
+                    <li>Mettre en place le principe de moindre privilèges et réviser les rôles de Domain Administrator pour l'équipe de la GIA en automatisant le recueil d'informations à l'aide de PowerShell.</li>
+                    <li>Faire le redressement d'une domaine en faisant l'analyse de conformité CIS à l'aide de Tenable Nessus. Analyser et automatiser les tableaux croisés de ces informations pour les correctifs nécessaires à l'aide de GPOs.</li>
+                    <li>Traiter les tickets de demandes de création d'applications dans Entra ID et faire le suivi des demandes avec les clients.</li>
+                    <li>Analyser et tester l'applicabilité du concept de CTEM dans l'unité à l'aide d'outils comme Microsoft Defender for Cloud.</li>
+                    <li>Faire une liste des informations/connaissances nécessaires pour un nouvel employé dans l'unité de la GIA et documenter les matériels didactiques pour ces prérequis.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- UdeM Teaching Assistant -->
+        <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+                <div class="timeline-header">
+                    <div class="timeline-title">
+                        <h3>Université de Montréal</h3>
+                        <p class="position">Auxiliaire en enseignement</p>
+                    </div>
+                    <span class="timeline-date">Jan 2023 – Avr 2023, Sept 2024 – Avr 2025</span>
+                </div>
+                
+                <p style="color: var(--text-dark); font-weight: 600; margin: 1rem 0 0.75rem 0;">Cours de Sécurité Informatique</p>
+                <ul class="timeline-description">
+                    <li>Préparer et corriger les devoirs donnés aux étudiants afin d'évaluer leur compréhension de la matière, notamment en mettant en place un VM sur lequel les étudiants avaient pour devoir d'analyser 2 maliciels à l'aide des outils fournis</li>
+                    <li>Donner un introduction aux étudiants sur l'analyse statique des maliciels et de divers concepts tels que les CVEs et CVSS</li>
+                </ul>
+
+                <p style="color: var(--text-dark); font-weight: 600; margin: 1.5rem 0 0.75rem 0;">Cours de Programmation Orienté-Objet</p>
+                <ul class="timeline-description">
+                    <li>Préparer et corriger les devoirs donnés aux étudiants afin d'évaluer leur compréhension de la matière</li>
+                    <li>Donner les cours de démonstration aux étudiants et assurer l'utilisation des bonnes pratiques de programmation orientée objet</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Groupe Civitas -->
+        <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+                <div class="timeline-header">
+                    <div class="timeline-title">
+                        <h3>Groupe Civitas Inc.</h3>
+                        <p class="position">Agent en soutien informatique</p>
+                    </div>
+                    <span class="timeline-date">Avr 2024 – Sept 2024</span>
+                </div>
+                <ul class="timeline-description">
+                    <li>Gérer les comptes des employés de la compagnie et mettre en place les comptes des nouveaux employés de façon conforme aux politiques d'Active Directory</li>
+                    <li>Offrir du support informatique de niveau 1 aux employés</li>
+                    <li>Réaliser la synthèse des rapports relatifs à la sécurité informatique de l'entreprise et rechercher des solutions de longue durée pour améliorer la supervision et l'automatisation des réponses des systèmes informatiques</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Section Divider -->
+        <div class="section-divider">
+            <h2>Leadership & Implications</h2>
+            <p>Engagement communautaire et formation technique</p>
+        </div>
+
+        <!-- RHUM -->
+        <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+                <div class="timeline-header">
+                    <div class="timeline-title">
+                        <h3>Regroupement des Hackers de l'Université de Montréal (RHUM)</h3>
+                        <p class="position">Co-Président</p>
+                    </div>
+                    <span class="timeline-date">Jan 2023 – Mai 2025</span>
+                </div>
+                <ul class="timeline-description">
+                    <li>Participer aux compétitions informatiques telles que NorthSec, Hackfest & UnitedCTF</li>
+                    <li>Préparer des conteneurs Docker servant de plateformes de pentesting pour la formation des membres du club</li>
+                    <li>Former les membres du club aux principes et aux implémentations de diverses fonctions cryptographiques telles que RSA, AES & DES au sein des logiciels</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-copyright">© 2026 Arpad Botond Rigo. Tous droits réservés.</div>
+            <ul class="footer-links">
+                <li><a href="mailto:arpad.botond.rigo@outlook.com">Email</a></li>
+                <li><a href="tel:438-408-0719">Téléphone</a></li>
+                <li><a href="https://github.com/Arpad05" target="_blank">GitHub</a></li>
+                <li><a href="https://linkedin.com/in/arpad-botond-rigo-30698b239/" target="_blank">LinkedIn</a></li>
+            </ul>
+        </div>
+    </footer>
 </body>
 </html>
